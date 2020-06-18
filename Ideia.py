@@ -1,13 +1,16 @@
 from random import choice
 from time import sleep
 
-pos = ['posa', 'posb', 'posc', 'posd', 'pose', 'posf', 'posg', 'posh', 'posj']
+pos = ['posa', 'posb', 'posc', 'posd', 'pose', 'posf', 'posg', 'posh', 'posi', 'posj']
 local = {'posa': ['A', 'B', 'D'], 'posb': ['B', 'A', 'C'],
          'posc': ['C', 'B'], 'posd': ['D', 'A', 'E'],
          'pose': ['E', 'D', 'I'], 'posf': ['F', 'I', 'J'],
          'posg': ['G', 'H'], 'posh': ['H', 'G', 'I', 'J'],
          'posi': ['I', 'E', 'F', 'H'], 'posj': ['J', 'F', 'H']}
-inicial = choice(pos)
+while True:
+    inicial = choice(pos)
+    if inicial != 'posi':
+        break
 posobjeto = local[inicial]
 posjogador = local['posi']
 c = 0
@@ -65,14 +68,16 @@ while True:
         print(f'\033[1;31mprint teste possíveis posições do objeto-> {fugir}\033[m')
         if fugir == []:
             break
-    else:
         novapos = choice(fugir)
         print(f'\033[1;31mprint teste depois de o objeto trocar a posição-> {novapos}\033[m')
+    else:
         for x in local:
             if novapos == local[x][0]:
                 posobj1 = local[x]
                 break
-        fugir = esconder(posobjeto, posjogador)
+        fugir = esconder(posobj1, posjogador)
+        novapos = choice(fugir)
+        print(f'\033[1;31mprint teste depois de o objeto trocar a posição-> {novapos}\033[m')
     sleep(4)
     if posobjeto == posjogador:
         break
