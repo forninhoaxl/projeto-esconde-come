@@ -44,7 +44,7 @@ def esconder(lugarob, lugarjog):
         if c in lugarob:
             objeto.remove(c)
             if objeto == []:
-                objeto.append(c)
+                objeto.append(lugarob[0])
                 break
     print(f'\033[1;31mprint teste posição do objeto antes de se mover-> {lugarob}\033[m')
     print(f'\033[1;31mprint teste lugar do jogador que vai limitar o objeto-> {lugarjog}\033[m')
