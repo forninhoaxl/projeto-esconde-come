@@ -31,8 +31,10 @@ def procurar(posatual):
     andarjpt1 = int(input('Você deseja ir para que posição? [utilize um número como posição'
                          ' desejada para ir, exemplo primeiro lugar, digite 1.] ')) - 1
     andarjpt2 = podeir[andarjpt1]
+    print(f'\033[1;31m{andarjpt1}\033[m')
     for lugar in local:
         if local[lugar][0] == andarjpt2:
+            print(f'\033[1;34m{lugar}\033[m')
             jogandou = local[lugar]
             break
     return jogandou
@@ -58,10 +60,12 @@ def esconder(lugarob, lugarjog):
     return objandou
 
 
-while True:
-    posatualjog = procurar(posatualjog)[:]
-    posatualobj = esconder(posatualobj, posatualjog)[:]
-    if posatualjog == posatualobj:
-        break
+def iniciar():
+    global posatualjog, posatualobj
+    while True:
+        posatualjog = procurar(posatualjog)[:]
+        posatualobj = esconder(posatualobj, posatualjog)[:]
+        if posatualjog == posatualobj:
+            break
+iniciar()
 print('Você conseguiu achar o objeto!')
-
